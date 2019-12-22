@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  wechat:
+    build: .
+    restart: always
+    labels:
+      - "traefik.http.routers.wechat.rule=Host(`we.shanyue.tech`)"
+    expose:
+      - 3000
+
+networks:
+  default:
+    external:
+      name: traefik_default

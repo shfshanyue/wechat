@@ -1,11 +1,9 @@
+require('dotenv').config()
+
 const Koa = require('koa')
+const router = require('./router')
 const app = new Koa()
 
-// response
-app.use(ctx => {
-  ctx.body = 'Hello Koa'
-})
+app.use(router.middleware())
 
-app.listen(3000, () => {
-  console.log('Listing Port 3000')
-})
+app.listen(3000)

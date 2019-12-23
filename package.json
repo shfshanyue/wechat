@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^16.1.8",
     "co-wechat": "^2.4.0",
     "dotenv": "^8.2.0",
     "koa": "^2.11.0",
-    "koa-joi-router": "^6.0.1",
+    "koa-router": "^7.4.0",
+    "lru-cache": "^5.1.1",
     "nodemon": "^2.0.2"
   }
 }

@@ -20,5 +20,5 @@ exports.verifyToken = async function (ctx) {
   const { token } = Joi.attempt(ctx.request.body, Joi.object({
     token: Joi.string().required()
   }))
-  return jwt.verify(token, secret)
+  ctx.body = jwt.verify(token, secret)
 }

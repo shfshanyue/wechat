@@ -20,6 +20,7 @@ router.get('/api', async (ctx) => {
 })
 
 router.post('/api/verifyCode', code.verifyCode)
+router.post('/api/verifyToken', code.verifyToken)
 
 module.exports = router
 

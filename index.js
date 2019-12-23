@@ -1,10 +1,15 @@
 require('dotenv').config()
 
 const Koa = require('koa')
+const koaBody = require('koa-body')
 const wechat = require('co-wechat')
 const router = require('./router')
-const we = require('./core/we')
+const we = require('./wechat')
 const app = new Koa()
+
+app.use(koaBody({
+  jsonLimit: '1kb'
+}))
 
 const config = {
   token: process.env.TOKEN,
@@ -13,6 +18,7 @@ const config = {
 }
 
 app.use(router.routes())
+
 app.use(wechat(config).middleware(we))
 
 app.listen(3000)

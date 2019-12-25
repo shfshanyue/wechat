@@ -5,7 +5,9 @@ services:
     build: .
     restart: always
     labels:
-      - "traefik.http.routers.wechat.rule=Host(`we.shanyue.tech`)"
+      - traefik.http.routers.wechat.rule=Host(`we.shanyue.tech`)
+      - traefik.http.routers.wechat.tls=true
+      - traefik.http.routers.wechat.tls.certresolver=le
     expose:
       - 3000
 

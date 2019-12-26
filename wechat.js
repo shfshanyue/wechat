@@ -1,6 +1,6 @@
 // 处理微信逻辑，自动回复微信消息
 
-const cache = require('./cache')
+const cache = require('./lib/cache')
 
 function handleCode (message) {
   const { FromUserName: from, Content: code } = message

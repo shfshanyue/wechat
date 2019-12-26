@@ -1,5 +1,5 @@
 const Joi = require('@hapi/joi')
-const cache = require('../cache')
+const cache = require('../lib/cache')
 const jwt = require('jsonwebtoken')
 
 const secret = process.env.JWT_SECRET

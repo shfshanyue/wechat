@@ -11,6 +11,20 @@ services:
     expose:
       - 3000
 
+  wechat-dev:
+    image: 'node:10-alpine'
+    restart: always
+    volumes:
+      - .:/code
+    working_dir: /code
+    command: npm run dev
+    labels:
+      - traefik.http.routers.wechat-dev.rule=Host(`we.dev.shanyue.tech`)
+      - traefik.http.routers.wechat-dev.tls=true
+      - traefik.http.routers.wechat-dev.tls.certresolver=le
+    expose:
+      - 3000
+
 networks:
   default:
     external:

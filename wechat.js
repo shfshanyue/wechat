@@ -2,6 +2,31 @@
 
 const _ = require('lodash')
 const cache = require('./lib/cache')
+const api = require('./lib/wechat')
+
+// 关注后回复
+function handleSubscribe () {
+  const message = `终于等到你，你离突破自我又近了一步
+这里除了技术文章外，也有一些新人成长，自由职业，产品思考以及天上星陌边花的有趣文章，欢迎交流
+
+--------
+
+回复【加群】，与众多开发者交流
+回复【微信】，与我交流产品技术
+`
+  return message
+}
+
+// 自动回复
+function handleDefault () {
+  const message = 
+`回复【加群】，与众多开发者交流
+回复【微信】，与我交流产品技术
+回复【面试】，将有大厂模拟面试
+回复【面试】，将有大厂模拟面试
+`
+  return message
+}
 
 function handleCode (message) {
   const { FromUserName: from, Content: code } = message
@@ -10,28 +35,34 @@ function handleCode (message) {
   return '您好，在三分钟内刷新网站即可无限制浏览所有文章'
 }
 
-function handleReplyWechat () {
-  
+async function handleReplyWechat () {
+  // const materials = await api.getMaterials('image', 0, 2)
+  // console.log(JSON.parse(materials.toString()))
+  // 硬编码，不太好...
+  return {
+    type: 'image',
+    content: {
+      mediaId: 'Gtdxee7ZsbxB6kkbVpNuJfkmgmyGLMRN--W5mwbBYlg'
+    }
+  }
 }
 
-function handleSubscribe () {
-  const message = `欢迎关注公众号 【全栈成长之路】
-我是山月，你可以添加我的微信号 shanyue94，另欢迎关注我的系列文章
-
-1. 当我有一台服务器时，我做了什么 https://shanyue.tech/op/ (即将全部转入公众号)
-2. 全栈之路，日进一卒 https://q.shanyue.tech/ (公众号将精选问题写入文章)
-3. 使用 GraphQL 构建 web 应用 https://github.com/shfshanyue/graphql-guide
-4. kubernetes 与 微服务实践 https://github.com/shfshanyue/learn-k8s
-5. Serverless与微信开发 
+function handleInterview () {
+  return `
 `
-  return message
 }
 
 const routes = [{
+  default: true,
+  handle: handleDefault
+}, {
   text: /\d{4}/,
   handle: handleCode
 }, {
-  text: /微信/,
+  text: /面试/,
+  handle: handleInterview,
+}, {
+  text: /微信|加群/,
   handle: handleReplyWechat
 }, {
   event: 'subscribe',
@@ -42,7 +73,7 @@ module.exports = (message, ctx) => {
   // 使用 winston 替代，如果用户多了
   console.log(message)
   const { MsgType: type, Content: content, Event: event } = message
-  const types = ['text', 'voice', 'image', 'event']
+  const types = ['text', 'voice', 'image', 'event', 'default']
 
   // 路由可缓存
   const groupRoutes = _.groupBy(
@@ -69,7 +100,7 @@ module.exports = (message, ctx) => {
       route => route.event === event
     )
   }
-
+  matchRoute = matchRoute || _.get(groupRoutes, ['default', 0])
   if (matchRoute) {
     return matchRoute.handle(message, ctx)
   }

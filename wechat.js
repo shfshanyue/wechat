@@ -2,7 +2,7 @@
 
 const _ = require('lodash')
 const cache = require('./lib/cache')
-const api = require('./lib/wechat')
+const issue = require('./utils/issue')
 
 // 关注后回复
 function handleSubscribe () {
@@ -13,6 +13,7 @@ function handleSubscribe () {
 
 回复【加群】，与众多开发者交流
 回复【微信】，与我交流产品技术
+回复【面试】，将有大厂模拟面试
 `
   return message
 }
@@ -48,8 +49,7 @@ async function handleReplyWechat () {
 }
 
 function handleInterview () {
-  return `
-`
+  return issue.randomIssues(8).map((issue, i) => `${i+1}. ${issue.title.slice(6)}`).join('\n\n')
 }
 
 const routes = [{
@@ -69,6 +69,7 @@ const routes = [{
   handle: handleSubscribe
 }]
 
+// 路由控制函数，黑盒子，可忽略
 module.exports = (message, ctx) => {
   // 使用 winston 替代，如果用户多了
   console.log(message)

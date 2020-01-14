@@ -10,6 +10,10 @@ function random (list) {
   return _.get(list, _.random(list.length - 1))
 }
 
+function getIssueById (id) {
+  return _.get(issuesById, id, {})
+}
+
 // group: 只提供 fe/server
 function randomIssues (n = 9, group = 'fe') {
   const issues = _.get(issuesByGroup, group, [])
@@ -20,5 +24,7 @@ function randomIssues (n = 9, group = 'fe') {
 }
 
 module.exports = {
-  randomIssues
+  randomIssues,
+  getIssueById,
+  issues
 }

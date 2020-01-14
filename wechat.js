@@ -49,7 +49,9 @@ async function handleReplyWechat () {
 }
 
 function handleInterview () {
-  return issue.randomIssues(8).map((issue, i) => `${i+1}. ${issue.title.slice(6)}`).join('\n\n')
+  return issue.randomIssues(8).map((issue, i) =>
+    `<a href="https://github.com/shfshanyue/Daily-Question/issues/${issue.number}">${i+1}. ${issue.title.slice(6)}</a>`
+  ).join('\n\n')
 }
 
 const routes = [{

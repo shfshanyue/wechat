@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const code = require('./ctrl/code')
+const issue = require('./ctrl/issue')
 
 router.use(async (ctx, next) => {
   try {
@@ -21,6 +22,9 @@ router.get('/api', async (ctx) => {
 
 router.post('/api/verifyCode', code.verifyCode)
 router.post('/api/verifyToken', code.verifyToken)
+
+router.get('/api/issues', issue.issues)
+router.get('/api/issues/random', issue.random)
 
 module.exports = router
 

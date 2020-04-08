@@ -10,6 +10,10 @@ const LABELS = [
     group: 'server'
   },
   {
+    name: '爬虫',
+    group: 'server'
+  },
+  {
     name: 'open',
     alias: '开放式问题',
     group: 'open'

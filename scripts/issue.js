@@ -46,7 +46,7 @@ function main() {
   if (argv.n) {
     const n = String(argv.n)
     const ids = _.includes(n, '-') ? _.range(...n.split('-')) : n.split(',')
-    const md = getIssuesMd(_.map(ids, id => _.get(issuesById, id)))
+    const md = getIssuesMd(_.map(ids, id => _.get(issuesById, id)).filter(Boolean))
     console.log(md)
   }
   if (argv.label) {

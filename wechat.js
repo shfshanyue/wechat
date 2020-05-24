@@ -6,10 +6,13 @@ const issue = require('./utils/issue')
 
 // 关注后回复
 function handleSubscribe () {
-  const message = `终于等到你，你离突破自我又近了一步
-这里除了技术文章外，也有一些新人成长，自由职业，产品思考以及天上星陌边花的有趣文章，欢迎交流
+  const message = `终于等到你，恭喜你离突破自我又近了一步，这里汇集着前端，后端及 DevOps 的全链路式优秀文章。
+
+并在每晚 10: 24 准时推送
 
 --------
+<a href="https://shanyue.tech">山月博客</a>
+<a href="https://q.shanyue.tech">每日一题</a>
 
 回复【加群】，与众多开发者交流
 回复【微信】，与我交流产品技术
@@ -23,7 +26,6 @@ function handleDefault () {
   const message = 
 `回复【加群】，与众多开发者交流
 回复【微信】，与我交流产品技术
-回复【面试】，将有大厂模拟面试
 回复【面试】，将有大厂模拟面试
 `
   return message

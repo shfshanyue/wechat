@@ -12,7 +12,7 @@ services:
       - 3000
 
   wechat-dev:
-    image: 'node:10-alpine'
+    image: 'node:12-alpine'
     restart: always
     volumes:
       - .:/code

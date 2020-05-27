@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "ncu": "ncu",
     "dev": "nodemon index.js",
     "issues": "node scripts/build-issues.js"
   },

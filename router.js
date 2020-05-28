@@ -38,6 +38,7 @@ router.get('/api/issues/random', issue.random)
 
 // TODO: 挂载到路由 /wechat 之下
 router.get('/wechat', wechat(config).middleware(we))
+router.post('/wechat', wechat(config).middleware(we))
 
 module.exports = router
 

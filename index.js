@@ -22,3 +22,5 @@ app.use(router.routes())
 
 app.listen(3000)
 
+require('./lib/wechat')
+

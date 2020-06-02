@@ -2,7 +2,7 @@
 
 const _ = require('lodash')
 const cache = require('./lib/cache')
-const issue = require('./utils/issue')
+const issue = require('./service/issue')
 
 // 关注后回复
 function handleSubscribe () {

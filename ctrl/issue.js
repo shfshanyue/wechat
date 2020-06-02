@@ -1,5 +1,5 @@
 const Joi = require('@hapi/joi')
-const issue = require('../utils/issue')
+const issue = require('../service/issue')
 
 exports.issues = async function (ctx) {
   const { ids } = Joi.attempt(ctx.request.query, Joi.object({

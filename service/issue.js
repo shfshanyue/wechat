@@ -6,21 +6,15 @@ const flatIssues = _.flatMap(issues, issue => _.map(issue.labels, label => _.omi
 const issuesByLabel = _.groupBy(flatIssues, 'label.name')
 const issuesByGroup = _.groupBy(flatIssues, 'label.group')
 
-function random (list) {
-  return _.get(list, _.random(list.length - 1))
-}
-
 function getIssueById (id) {
   return _.get(issuesById, id, {})
 }
 
 // group: 只提供 fe/server
 function randomIssues (n = 9, group = 'fe') {
-  const issues = _.get(issuesByGroup, group, [])
-  const groupIssues = Array.from(Array(n - 2), x => random(issues))
-  const devOpsIssues = random(issuesByLabel['docker'])
-  const httpIssues = random(issuesByLabel['http'])
-  return _.uniqBy([...groupIssues, devOpsIssues, httpIssues], 'number')
+  const issues = group ? _.get(issuesByGroup, group, []) : issues
+  const targetIssues = Array.from({ length: n }, x => _.sample(issues))
+  return _.uniqBy(targetIssues, 'number')
 }
 
 module.exports = {

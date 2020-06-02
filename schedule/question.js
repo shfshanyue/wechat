@@ -16,7 +16,7 @@ async function uploadIssue () {
   const issue = issues.find(i => i.comment)
   const answer = issue.comment.body
   const content = await getHtmlFromMd(answer)
-  console.log(issue.number, 'done', answer, content)
+  console.log(issue.number, 'done\n', answer)
   const result = await wechat.uploadNewsMaterial({
     articles: [
       {

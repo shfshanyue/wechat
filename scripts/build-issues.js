@@ -10,6 +10,11 @@ const LABELS = [
     group: 'server'
   },
   {
+    name: 'serverless',
+    alias: 'C语言',
+    group: 'server'
+  },
+  {
     name: '爬虫',
     group: 'server'
   },
@@ -207,11 +212,20 @@ getIssues().then(issues => {
     return {
       ..._.omit(issue, 'comments'),
       comment,
-      labels: issue.labels.nodes.map(label => {
+      labels: issue.labels.nodes.map(issue => {
+        console.log(issue)
+        let group, alias
+        try {
+          group = labels[issue.name].group
+          alias = labels[issue.name].alias
+        } catch (e) {
+          console.error(e, issue) 
+          throw e
+        }
         return {
-          ...label,
-          group: labels[label.name].group,
-          alias: labels[label.name].alias
+          ...issue,
+          group,
+          alias
         }
       })
     }

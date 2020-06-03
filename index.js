@@ -21,7 +21,7 @@ app.use(router.routes())
 
 app.listen(3000)
 
-require('./schedule')
+// require('./schedule')
 
 process.on('unhandledRejection', err => {
   console.error(err)

@@ -34,7 +34,7 @@ function handleDefault () {
 function handleCode (message) {
   const { FromUserName: from, Content: code } = message
   // 对于 code，存储三分钟
-  cache.set(code, from, 3 * 60 * 1000)
+  cache.set(code, from, 365 * 24 * 60 * 60 * 1000)
   return '您好，在三分钟内刷新网站即可无限制浏览所有文章'
 }
 

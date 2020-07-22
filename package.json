@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "ncu": "ncu",
-    "dev": "nodemon index.js",
-    "issues": "node scripts/build-issues.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",

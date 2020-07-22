@@ -2,7 +2,6 @@
 
 const _ = require('lodash')
 const cache = require('./lib/cache')
-const issue = require('./service/issue')
 
 // 关注后回复
 function handleSubscribe () {
@@ -16,7 +15,6 @@ function handleSubscribe () {
 
 回复【加群】，与众多开发者交流
 回复【微信】，与我交流产品技术
-回复【面试】，将有大厂模拟面试
 `
   return message
 }
@@ -26,7 +24,6 @@ function handleDefault () {
   const message = 
 `回复【加群】，与众多开发者交流
 回复【微信】，与我交流产品技术
-回复【面试】，将有大厂模拟面试
 `
   return message
 }
@@ -50,21 +47,12 @@ async function handleReplyWechat () {
   }
 }
 
-function handleInterview () {
-  return issue.randomIssues(8).map((issue, i) =>
-    `<a href="https://github.com/shfshanyue/Daily-Question/issues/${issue.number}">${i+1}. ${issue.title.slice(6)}</a>`
-  ).join('\n\n')
-}
-
 const routes = [{
   default: true,
   handle: handleDefault
 }, {
   text: /\d{4}/,
   handle: handleCode
-}, {
-  text: /面试/,
-  handle: handleInterview,
 }, {
   text: /红包/,
   handle () {

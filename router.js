@@ -2,7 +2,6 @@ const router = require('koa-router')()
 const wechat = require('co-wechat')
 
 const code = require('./ctrl/code')
-const issue = require('./ctrl/issue')
 const we = require('./wechat')
 
 const config = {
@@ -33,10 +32,6 @@ router.get('/api', async (ctx) => {
 router.post('/api/verifyCode', code.verifyCode)
 router.post('/api/verifyToken', code.verifyToken)
 
-router.get('/api/issues', issue.issues)
-router.get('/api/issues/random', issue.random)
-
-// TODO: 挂载到路由 /wechat 之下
 router.get('/wechat', wechat(config).middleware(we))
 router.post('/wechat', wechat(config).middleware(we))
 

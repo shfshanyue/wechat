@@ -66,6 +66,11 @@ const routes = [{
   text: /面试/,
   handle: handleInterview,
 }, {
+  text: /红包/,
+  handle () {
+    return '<a data-miniprogram-appid="wx558e4cb3c26e6076" data-miniprogram-path="/pages/lottery/detail.html?id=xjjp4oka5lk7so6d8" href=" ">点我参与抽奖！</a>'
+  }
+}, {
   text: /微信|加群/,
   handle: handleReplyWechat
 }, {

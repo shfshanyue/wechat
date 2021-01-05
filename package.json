@@ -13,7 +13,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "@koa/cors": "^3.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "co-wechat": "^2.4.0",
     "co-wechat-api": "^3.10.0",
     "dotenv": "^8.2.0",

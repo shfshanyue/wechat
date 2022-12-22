@@ -17,7 +17,7 @@
     "co-wechat": "^2.4.0",
     "co-wechat-api": "^3.10.0",
     "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
     "koa-router": "^9.1.0",
